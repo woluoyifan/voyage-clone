@@ -1,0 +1,74 @@
+logging:
+  config: classpath:log4j2.xml
+
+server:
+  port: 18888
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///voyage?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2b8&useSSL=false
+    username: dev
+    password: dev
+    hikari:
+      max-lifetime: 60000
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+
+voyage:
+  admin-password: 123 #管理员密码
+  app-name: 网络航海时代 #游戏名称
+  person-limit: 200 #人數限制(推薦200人以下)]
+  username-length-limit: 12
+  user-init-money: 20000 #注册时初始金额
+  user-init-capacity: 100 #注册时最大能力值
+  ship-num-limit: 17 #拥有船只数上限
+  attack-limit: 200 # 战斗力上限
+  command-limit: 200 # 指挥力上限
+  navigation-limit: 200 # 航海力上限
+  goods-price-change-module: 213 #价格波动系数,0时不波动
+  one-dollar-influence: 0.00000003 #交易时每1G的物价影响量
+  min-price-index: 0.5 #最小价格指数
+  max-price-index: 1.5 #最大价格指数
+  price-index-change-limit: 0.1 #最大价格指数变化
+  price-change-cycle: 7 #物价变动周期
+  time-scale: 1 #移动所需时间的时间尺度,0最小,500最大
+  sell-rate: 0.6 #售出价格比率
+  trade-change-rate: 10000 #交易经验折算比率
+  sailor-waste: 0.001 	# 水手每人每秒所消耗食物量
+  save-food-rate: 0.8 #节约食物消耗的物品影响的比率
+  food-price: 10 #食物价格
+  employ-price: 100 #水手雇佣价格
+  city-create-price: 1000000 #建立城市的价格
+  city-create-price-rich-threshold: 10000000 #有钱人建立城市的资金阈值
+  city-create-price-rich-rate: 0.15 #有钱人建立城市花费的金钱比率
+  city-init-hp: 10000 #城镇初始HP
+  city-repair-cost: 50 #城镇修理的费用(每HP)
+  city-money-attack-cost: 1000000 #城镇破坏费用
+  city-money-attack-damage: 1000 #城镇破坏HP值
+  city-attack-power: 400 #城镇的攻击力
+  city-attack-random: 100 #城镇战斗时的随机变化
+  city-goods-limit: 7 #城镇物品存放数量限制
+  city-ship-limit: 7 #城镇船只存放数量限制
+  user-operation-display-limit: 100 #用户操作记录显示限制
+  user-list-display-limit: 50 #用户列表显示限制
+  event-record-display-limit: 100 #事件记录显示限制
+  chat-record-display-limit: 30 #聊天记录显示限制
+  combat-limit: 300 #连续战斗限制（秒）
+  city-combat-limit: 2700 #连续战斗限制（秒）
+  same-opponent-limit: 43200 #相同对手战斗限制（秒）
+  mooring-time: 10800 #停泊时间（秒）
+  rookie: 30 #按注册时间逆序，计数多少以内为新人
+
+---
+# dev环境配置
+spring:
+  profiles: dev
+  jpa:
+    show-sql: true
+logging:
+  level:
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE #查看SQL参数用
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE #查看SQL参数用
+    org.hibernate.engine.QueryParameters: DEBUG #查看SQL参数用
+    org.hibernate.engine.query.HQLQueryPlan: DEBUG #查看SQL参数用
