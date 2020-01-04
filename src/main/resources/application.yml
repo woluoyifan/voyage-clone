@@ -32,7 +32,7 @@ voyage:
   max-price-index: 1.5 #最大价格指数
   price-index-change-limit: 0.1 #最大价格指数变化
   price-change-cycle: 7 #物价变动周期
-  time-scale: 1 #移动所需时间的时间尺度,0最小,500最大
+  time-scale: 250 #移动所需时间的时间尺度,0最小,500最大
   sell-rate: 0.6 #售出价格比率
   trade-change-rate: 10000 #交易经验折算比率
   sailor-waste: 0.001 	# 水手每人每秒所消耗食物量
